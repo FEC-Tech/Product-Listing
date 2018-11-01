@@ -25,4 +25,19 @@ app.get('/api/products', (req, res) => {
     });
 })
 
+app.get('/api/products/:productId', (req, res) => {
+  return dbModels.getProduct(req.params.productId)
+    .then((product) => {
+      return res.status(200).send(product.dataValues);
+    });
+})
+
+
+app.post('/api/products', (req, res) => {
+  // console.log('incoming req.query is', req.query, 'incoming req.body is', req.body);
+  const { title, description } = req.query;
+  return dbModels.addProduct(title, description)
+    .then((entry) => res.status(201).send(entry));
+})
+
 module.exports = app;
