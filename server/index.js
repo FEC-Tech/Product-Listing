@@ -3,18 +3,21 @@ const app = express();
 const dbModels = require('../db/models.js');
 
 const port = process.env.PORT || 3001;
-const host = process.env.HOST || 'localhost';
+const hostname = process.env.HOST || 'localhost';
 
 const morgan = require('morgan');
-const bodyparser = require('body-parser');
+// const bodyparser = require('body-parser');
 
 app.use(morgan('dev'));
-app.use(bodyparser);
+// app.use(bodyparser.json());
+// app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/../dist`));
 
 app.get('/api/products', (req, res) => {
   return dbModels.getProducts()
-    .then(res.json);
+    .then((products) => {
+      res.send(products);
+    });
 })
 
-app.listen(port, host, () => console.log(`listening on ${host}:${port}`));
+app.listen(port, hostname, () => console.log(`listening on ${hostname}:${port}`));
