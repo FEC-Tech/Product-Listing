@@ -7,6 +7,7 @@
     "build": "webpack --mode production",
     "dev-build": "webpack --mode development --watch",
     "dev-server": "nodemon --inspect server/index.js",
+    "seed": "node db/seeds/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,8 +22,12 @@
   },
   "homepage": "https://github.com/szerfas1/Product-Listing#readme",
   "dependencies": {
+    "bluebird": "^3.5.2",
     "express": "^4.16.4",
-    "morgan": "^1.9.1"
+    "faker": "^4.1.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.41.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
