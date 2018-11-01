@@ -1,7 +1,7 @@
 const db = require('./index.js');
 
 const getProducts = () => {
-  return db.Products.findAll();
+  return db.Product.findAll();
 }
 
 exports.getProducts = getProducts;
