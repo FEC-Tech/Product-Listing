@@ -25,11 +25,14 @@ const Product = orm.define('product', {
 })
 
 const Image = orm.define('image', {
-  imageUrl: Sequelize.STRING,
+  imageUrl1: Sequelize.STRING,
+  imageUrl2: Sequelize.STRING,
+  imageUrl3: Sequelize.STRING,
+  imageUrl4: Sequelize.STRING,
 })
 
 // set up relationships
-// Image.belongsTo(Product)
+Image.belongsTo(Product)
 
 // export
 exports.Product = Product;
